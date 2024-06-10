@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>CALCULATOR</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="icon" href="./image.png" />
+    <script src="main.js"></script>
+  </head>
+  <body>
+    <h1>CALCULATOR</h1>
+    <br id="br"/>
+
+    <div class="Back">
+      <p id="display"><span id="displ"></span><br /><br id="dispbr" /></p>
+      <br />
+      <p id="clr">CLEAR</p>
+      <br />
+      <div class="frow">
+        <p class="offbtn" id="off">OFF</p>
+        <p class="offbtn" id="on">ON</p>
+        <p class="numberbtn1" onclick="appnddisp('7')" id="seven">7</p>
+        <p class="numberbtn2" onclick="appnddisp('8')" id="eight">8</p>
+        <p class="numberbtn2" onclick="appnddisp('9')" id="nine">9</p>
+      </div>
+
+      <div class="frow">
+
+        <p class="op" onclick="appnddisp('+')" id="plus">+</p>
+        <p class="op" onclick="appnddisp('-')" id="minus">-</p>
+        <p class="numberbtn3" onclick="appnddisp('4')" id="four">4</p>
+        <p class="numberbtn4" onclick="appnddisp('5')" id="five">5</p>
+        <p class="numberbtn4" onclick="appnddisp('6')" id="six">6</p>
+      </div>
+
+      <div class="frow">
+        <p class="op" onclick="appnddisp('×')" id="plus">×</p>
+        <p class="op" onclick="appnddisp('÷')" id="minus">÷</p>
+        <p class="numberbtn3" onclick="appnddisp('1')" id="four">1</p>
+        <p class="numberbtn4" onclick="appnddisp('2')" id="five">2</p>
+        <p class="numberbtn4" onclick="appnddisp('3')" id="six">3</p>
+      </div>
+
+      <div class="frow">
+        <p class="hjk" onclick="calculate()" id="eq">=</p>
+        <p class="hjk" onclick="appnddisp('0')" id="zero">0</p>
+      </div>
+      <br />
+    </div>
+
+    <script>
+      var total = 0;
+      var onn = false;
+
+      var display = document.getElementById("displ");
+
+      var off = document.getElementById("off");
+      var on = document.getElementById("on");
+      var clr = document.getElementById("clr");
+
+      var dispbr = document.getElementById("dispbr");
+
+      off.addEventListener("click", function () {
+        display.textContent = "";
+        dispbr.setAttribute("class", "disp");
+        onn = false;
+      });
+
+      on.addEventListener("click", function () {
+        display.textContent = "0";
+        dispbr.setAttribute("id", "dispbr");
+        onn = true;
+      });
+
+      function appnddisp(value) {
+        if (onn) {
+          if (display.textContent === "0") {
+            display.textContent = value;
+          } else {
+            display.textContent += " ";
+            display.textContent += value;
+            display.textContent += " ";
+          }
+        }
+      }
+
+      function addSpacesBetweenCharacters(inputString) {
+      
+          let characters = inputString.split('');
+          
+          let spacedString = characters.join(' ');
+          
+          return spacedString;
+      }
+
+      function calculate() {
+        if (onn) {
+          var expression = display.textContent;
+          expression = expression
+            .replace(/×/g, "*")
+            .replace(/÷/g, "/")
+            .replace(/ /g, "");
+          try {
+            total = eval(expression);
+            var t = String(total);
+            var tt = addSpacesBetweenCharacters(t);
+
+            display.textContent = tt;
+          } catch (error) {
+            display.textContent = "Error";
+          }
+        }
+      }
+
+      clr.addEventListener("click", function () {
+        if (onn) {
+          display.textContent = "0";
+          dispbr.setAttribute("id", "dispbr");
+        }
+      });
+    </script>
+  </body>
+</html>
