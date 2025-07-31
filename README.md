@@ -2,6 +2,9 @@
 
 A simple and responsive calculator built using HTML, CSS, and JavaScript.
 
+## 📸 Preview
+
+<img width="2880" height="1520" alt="image" src="https://github.com/user-attachments/assets/35558eb2-6150-4890-850d-e397f0ec61b8" />
 
 ## 🔍 Features
 
@@ -21,14 +24,4 @@ Check it out here: [Live Deployed Version](https://ajjay0604.github.io/Calculato
 - CSS3  
 - JavaScript (ES6)
 
-## 📸 Preview
-
-<img width="2880" height="1520" alt="image" src="https://github.com/user-attachments/assets/35558eb2-6150-4890-850d-e397f0ec61b8" />
-
-
-## 📽️ Demo Video
-
-You can view the calculator in action in the attached video file: `CALCULATOR VIDEO.mp4`
-
-## 📂 Project Structure
 
